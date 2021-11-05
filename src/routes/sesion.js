@@ -3,6 +3,7 @@ const router = express.Router();
 
 const connection = require('../../database');
 
+//Lista de sesiones
 router.get('/sesiones', (req, res) => {
     connection.query('SELECT * FROM sesion', (err, rows, fields) => {
         if(!err){
@@ -13,6 +14,7 @@ router.get('/sesiones', (req, res) => {
     });
 });
 
+//Sesion seleccionado por id
 router.get('/sesiones/:id', (req, res) => {
     const { id } = req.params;
     connection.query('SELECT * FROM sesion WHERE id_sesion = ?', [id], (err, rows, fields) => {
@@ -24,6 +26,7 @@ router.get('/sesiones/:id', (req, res) => {
     });
 });
 
+//Agrega una nueva sesion
 router.post('/sesiones', (req,res) => {
     const body = req.body;
     connection.query('INSERT INTO sesion set ?', [body], (err, rows) => {
@@ -37,6 +40,7 @@ router.post('/sesiones', (req,res) => {
     })
 })
 
+//Actualiza una sesion por id
 router.put('/sesiones/:id', (req,res) => {
     const { id } = req.params;
     connection.query('UPDATE sesion set ? WHERE id_mentor = ?', [req.body, id], (err, rows) => {
@@ -49,6 +53,7 @@ router.put('/sesiones/:id', (req,res) => {
     })
 })
 
+//Elimina una sesion por id
 router.delete('/sesiones/:id', (req, res) => {
     const { id } = req.params;
     connection.query('DELETE FROM mentor WHERE id_mentor = ?', [id], (err, rows) => {
