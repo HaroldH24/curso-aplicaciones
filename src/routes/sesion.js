@@ -10,10 +10,10 @@ router.get('/sesiones', sesionController.listaSesion);
 router.get('/sesiones/:id', sesionController.listaSesionPorId);
 
 //Agrega una nueva sesion
-router.post('/sesiones', sesionController.agregaSesion)
+router.post('/sesiones', sesionController.agregaSesion);
 
 //Actualiza una sesion por id
-router.put('/sesiones/:id', sesionController.actualizaSesion)
+router.put('/sesiones/:id', sesionController.actualizaSesion);
 
 //Elimina una sesion por id
 router.delete('/sesiones/:id', sesionController.eliminaSesion)
